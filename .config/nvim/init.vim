@@ -190,20 +190,21 @@ set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [line=%l\ column=%c]\ [bu
 set guicursor=
 
 " gui guibg guifg
+" cterm ctermbg ctermfg
 set cul
 set colorcolumn=+1
-highlight ColorColumn guibg=Maroon
-highlight NonText gui=bold guibg=none guifg=DarkRed
-highlight LineNr gui=bold,italic guibg=Grey23
-highlight ColumnNr gui=bold,italic guibg=Grey23
-highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red
-highlight CursorLine gui=bold,italic guibg=Grey19
-highlight CursorColumn gui=bold,italic guibg=Grey19
-highlight Search guibg=Black guifg=DarkOrange
-autocmd InsertEnter * highlight CursorLine guibg=Grey19
-autocmd InsertLeave * highlight CursorLine guibg=Maroon
-autocmd InsertEnter * highlight CursorColumn guibg=Grey19
-autocmd InsertLeave * highlight CursorColumn guibg=Maroon
+highlight ColorColumn guibg=DarkRed ctermbg=DarkRed
+highlight NonText gui=bold guibg=none guifg=DarkRed cterm=bold ctermbg=none ctermfg=DarkRed
+highlight LineNr gui=bold,italic guibg=Grey23 cterm=bold,italic ctermbg=237
+highlight ColumnNr gui=bold,italic guibg=Grey23 cterm=bold,italic ctermbg=237
+highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red cterm=bold,italic ctermbg=237 ctermfg=Red
+highlight CursorLine gui=bold,italic guibg=Grey19 cterm=bold,italic ctermbg=236
+highlight CursorColumn gui=bold,italic guibg=Grey19 cterm=bold,italic ctermbg=236
+highlight Search guibg=Black guifg=DarkOrange ctermbg=Black ctermfg=208
+autocmd InsertEnter * highlight CursorLine guibg=Grey19 ctermbg=236
+autocmd InsertLeave * highlight CursorLine guibg=DarkRed ctermbg=DarkRed
+autocmd InsertEnter * highlight CursorColumn guibg=Grey19 ctermbg=236
+autocmd InsertLeave * highlight CursorColumn guibg=DarkRed ctermbg=DarkRed
 
 set encoding=utf-8 " Encoding
 

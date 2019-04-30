@@ -71,6 +71,8 @@ gitCommitAllFunction() {
 }
 alias gitCommitAll=gitCommitAllFunction
 
+alias 'gitdiff'='git difftool --tool=vimdiff'
+
 alias rg='nvim'
 alias please=sudo
 # Key bindings
