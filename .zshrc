@@ -13,6 +13,7 @@ $(shuf -n1 -e "${COMMANDS[@]}") | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf 
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+export PATH="${PATH}:${HOME}/.local/bin/"
 
 ZSH_THEME="agnoster"
 
