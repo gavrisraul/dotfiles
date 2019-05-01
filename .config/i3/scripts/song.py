@@ -26,6 +26,7 @@ if is_google_play_music:
     current_time = str(datetime.timedelta(seconds=current_time//1000))
     total_time = str(datetime.timedelta(seconds=total_time//1000))
 
+    #print(f'{song_artist} : {song_title} -> {current_time} / {total_time} {is_playing}')
     print(song_artist + ' : ' + song_title + ' -> ' + current_time + ' / ' + total_time + ' ' + is_playing)
 else:
     print('music')
