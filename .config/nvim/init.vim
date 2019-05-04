@@ -211,7 +211,7 @@ set encoding=utf-8 " Encoding
 
 " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
-set history=500 " Sets how many lines of history vim has to remember
+set history=1000 " Sets how many lines of history vim has to remember
 set hidden " A buffer becomes hidden when it is abandoned
 
 " Map the <Space> key to toggle a selected fold opened/closed.
@@ -219,8 +219,17 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
 " Automatically save and load folds
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview"
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
+" augroup remember_folds
+"   autocmd!
+"   au BufWinLeave ?* mkview 1
+"   au BufWinEnter ?* silent! loadview 1
+" augroup END
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -424,6 +433,13 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_list_window_size = 5
 " Don't run linters on file enter
 let g:ale_lint_on_enter = 0
+
+"""""""""""""""""
+" => YCM        "
+"""""""""""""""""
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_auto_trigger = 0
 
 """"""""""""""""""""""
 " => Python section  "
