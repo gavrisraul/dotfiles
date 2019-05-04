@@ -58,7 +58,7 @@ filetype indent on
 filetype plugin on
 
 map <leader>s :source ~/.vimrc<CR>
-map . :@:<CR> " repeat even commands that have a count!
+map <leader>. :@:<CR> " repeat even commands that have a count!
 map <leader>r :%s// " search and replace faster also empty string is \=''
 
 syntax enable " Enable syntax highlighting
@@ -70,6 +70,7 @@ let g:gruvbox_bold=1
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
+set nrformats= " Treat any number as decimal
 set path+=** " Search into subfolders
 set autoread " Set to auto read when a file is changed from the outside
 " set showmode " Only without vim airline
@@ -118,6 +119,10 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" Get rid of capslock and map it to escape
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -196,18 +201,32 @@ set guicursor=
 " cterm ctermbg ctermfg
 set cul
 set colorcolumn=+1
-highlight ColorColumn guibg=DarkRed ctermbg=DarkRed
-highlight NonText gui=bold guibg=none guifg=DarkRed cterm=bold ctermbg=none ctermfg=DarkRed
-highlight LineNr gui=bold,italic guibg=Grey23 cterm=bold,italic ctermbg=237
-highlight ColumnNr gui=bold,italic guibg=Grey23 cterm=bold,italic ctermbg=237
-highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red cterm=bold,italic ctermbg=237 ctermfg=Red
-highlight CursorLine gui=bold,italic guibg=Grey19 cterm=bold,italic ctermbg=236
-highlight CursorColumn gui=bold,italic guibg=Grey19 cterm=bold,italic ctermbg=236
-highlight Search guibg=Black guifg=DarkOrange ctermbg=Black ctermfg=208
-autocmd InsertEnter * highlight CursorLine guibg=Grey19 ctermbg=236
-autocmd InsertLeave * highlight CursorLine guibg=DarkRed ctermbg=DarkRed
-autocmd InsertEnter * highlight CursorColumn guibg=Grey19 ctermbg=236
-autocmd InsertLeave * highlight CursorColumn guibg=DarkRed ctermbg=DarkRed
+
+" highlight ColorColumn guibg=DarkRed
+" highlight NonText gui=bold guibg=none guifg=DarkRed
+" highlight LineNr gui=bold,italic guibg=Grey23
+" highlight ColumnNr gui=bold,italic guibg=Grey23
+" highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red
+" highlight CursorLine gui=bold,italic guibg=Grey19
+" highlight CursorColumn gui=bold,italic guibg=Grey19
+" highlight Search guibg=Black guifg=DarkOrange
+" autocmd InsertEnter * highlight CursorLine guibg=Grey19
+" autocmd InsertLeave * highlight CursorLine guibg=DarkRed
+" autocmd InsertEnter * highlight CursorColumn guibg=Grey19
+" autocmd InsertLeave * highlight CursorColumn guibg=DarkRed
+
+highlight ColorColumn ctermbg=DarkRed
+highlight NonText cterm=bold ctermbg=none ctermfg=DarkRed
+highlight LineNr cterm=bold,italic ctermbg=237
+highlight ColumnNr cterm=bold,italic ctermbg=237
+highlight StatusLine cterm=bold,italic ctermbg=237 ctermfg=Red
+highlight CursorLine cterm=bold,italic ctermbg=236
+highlight CursorColumn cterm=bold,italic ctermbg=236
+highlight Search ctermbg=Black ctermfg=208
+autocmd InsertEnter * highlight CursorLine ctermbg=236
+autocmd InsertLeave * highlight CursorLine ctermbg=DarkRed
+autocmd InsertEnter * highlight CursorColumn ctermbg=236
+autocmd InsertLeave * highlight CursorColumn ctermbg=DarkRed
 
 set encoding=utf-8 " Encoding
 
@@ -395,11 +414,18 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 """""""""""""""""""
 " => Ack.vim      "
 """""""""""""""""""
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
 " Open a new tab and search for something
 nmap <leader>a :tab split<CR>:Ack ""<Left>
 " Immediately search for the work under the cursor in a new tab
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+
+" let g:projectA_path="/path/to/A"
+" let g:projectB_path="/path/to/B"
+" let g:projectC_path="/path/to/C"
+
+" command! AckA exec 'Ack! '. pattern . " " . g:projectA_path
+" command! AckA exec 'Ack! <args> ' . g:projectA_path
 
 """""""""""""""""""
 " => Airline      "
@@ -442,6 +468,20 @@ let g:ale_lint_on_enter = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_auto_trigger = 0
+
+""""""""""""""""
+" => Ctags     "
+""""""""""""""""
+" Ctrl+] - go to definition
+" Ctrl+T - Jump back from the definition.
+" Ctrl+W Ctrl+] - Open the definition in a horizontal split
+
+" map <F11> :!ctags -R -f ./tags $VIRTUAL_ENV/lib/python/site-packages<CR>
+
+" Open the definition in a new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" Open the definition in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 """"""""""""""""""""""
 " => Python section  "
