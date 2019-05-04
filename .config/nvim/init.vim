@@ -40,6 +40,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/junegunn/goyo.vim'
     Plug 'https://github.com/Yggdroot/indentLine'
+    Plug 'https://github.com/w0rp/ale'
     function! BuildYCM(info)
         " info is a dictionary with 3 fields
         " - name:   name of the plugin
@@ -410,6 +411,19 @@ let g:airline#extensions#tabline#enabled = 1
 "   let g:airline_section_a = airline#section#create(keys)
 " endfunction
 " autocmd VimEnter * call AccentDemo()
+
+""""""""""""""""""
+" => Ale.vim     "
+""""""""""""""""""
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Show 5 lines of errors (default: 10)
+let g:ale_list_window_size = 5
+" Don't run linters on file enter
+let g:ale_lint_on_enter = 0
 
 """"""""""""""""""""""
 " => Python section  "
