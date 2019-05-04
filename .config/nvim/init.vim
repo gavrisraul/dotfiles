@@ -58,6 +58,8 @@ filetype indent on
 filetype plugin on
 
 map <leader>s :source ~/.vimrc<CR>
+map . :@:<CR> " repeat even commands that have a count!
+map <leader>r :%s// " search and replace faster also empty string is \=''
 
 syntax enable " Enable syntax highlighting
 set t_Co=256
