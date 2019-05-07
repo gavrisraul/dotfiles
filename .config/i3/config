@@ -17,7 +17,7 @@ hide_edge_borders both
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -236,9 +236,10 @@ exec xclip -o | xclip -selection clipboard -i
 
 # Lock i3 screen
 bindsym $mod+p exec i3lock --color 475263
+# bindsym $mod+p exec --no-startup-id /bin/betterlocki3lock
 
 # change resolution on enter
-exec --no-startup-id resolution
+# exec --no-startup-id resolution
 
 # Set wallpaper with feh
 exec_always --no-startup-id feh --randomize --bg-fill ~/.wallpapers/* --randomize --bg-fill ~/.wallpapers/*

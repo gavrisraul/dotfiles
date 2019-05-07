@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /tmp
+scrot lock.jpg
+betterlockscreen -w lock.jpg
+betterlockscreen -u lock.jpg
+betterlockscreen -l dimblur -t 'I answer only to Raul Gavriș'
+rm -rf lock.jpg

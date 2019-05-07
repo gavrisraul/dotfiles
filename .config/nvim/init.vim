@@ -41,6 +41,26 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/junegunn/goyo.vim'
     Plug 'https://github.com/Yggdroot/indentLine'
     Plug 'https://github.com/w0rp/ale'
+    Plug 'https://github.com/mbbill/undotree'
+    Plug 'https://github.com/justinmk/vim-sneak'
+    Plug 'https://github.com/easymotion/vim-easymotion'
+    Plug 'https://github.com/google/vim-searchindex'
+    Plug 'https://github.com/mhinz/vim-signify'
+    " Plug 'https://github.com/severin-lemaignan/vim-minimap'
+    " Plug 'https://github.com/haya14busa/vim-gtrans'
+    Plug 'https://github.com/SirVer/ultisnips'
+    Plug 'https://github.com/honza/vim-snippets'
+    " Plug 'https://github.com/airblade/vim-gitgutter'
+    Plug 'https://github.com/vim-scripts/SearchComplete'
+    " Plug 'https://github.com/Shougo/deoplete.nvim'
+    " Plug 'https://github.com/neoclide/coc.nvim'
+    " Plug 'https://github.com/hdima/python-syntax'
+    Plug 'https://github.com/vim-python/python-syntax'
+    Plug 'https://github.com/terryma/vim-expand-region'
+    Plug 'https://github.com/tpope/vim-repeat'
+    Plug 'https://github.com/szw/vim-g'
+    " pip3 install pynvim --upgrade | :UpdateRemotePlugins
+    Plug 'https://github.com/numirias/semshi', {'do': ':UpdateRemotePlugins'}
     function! BuildYCM(info)
         " info is a dictionary with 3 fields
         " - name:   name of the plugin
@@ -240,12 +260,12 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
 " Automatically save and load folds
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
-augroup END
-
+" augroup remember_folds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent! loadview
+" augroup END
+"
 " augroup remember_folds
 "   autocmd!
 "   au BufWinLeave ?* mkview 1
@@ -420,12 +440,11 @@ nmap <leader>a :tab split<CR>:Ack ""<Left>
 " Immediately search for the work under the cursor in a new tab
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-" let g:projectA_path="/path/to/A"
-" let g:projectB_path="/path/to/B"
-" let g:projectC_path="/path/to/C"
+let g:projectA_path="/path/to/A"
 
-" command! AckA exec 'Ack! '. pattern . " " . g:projectA_path
-" command! AckA exec 'Ack! <args> ' . g:projectA_path
+function! SS(toSearch)
+    execute "Ack ".a:toSearch." ".g:projectA_path
+endfunction
 
 """""""""""""""""""
 " => Airline      "
