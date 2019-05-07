@@ -247,7 +247,7 @@ exec_always --no-startup-id feh --randomize --bg-fill ~/.wallpapers/* --randomiz
 # bindsym Print exec scrot
 
 # lets use compotopon for nice effects
-exec --no-startup-id compton -f
+exec --no-startup-id compton -f -b
 
 # workspaces assignments
 # assign [class="^URxvt$"] $ws1
