@@ -60,7 +60,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/tpope/vim-repeat'
     Plug 'https://github.com/szw/vim-g'
     " pip3 install pynvim --upgrade | :UpdateRemotePlugins
-    Plug 'https://github.com/numirias/semshi', {'do': ':UpdateRemotePlugins'}
+    Plug 'https://github.com/numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+    Plug 'https://github.com/echuraev/translate-shell.vim', { 'do': 'wget -O ~/.vim/trans git.io/trans && chmod +x ~/.vim/trans' }
     function! BuildYCM(info)
         " info is a dictionary with 3 fields
         " - name:   name of the plugin
@@ -489,6 +490,11 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_auto_trigger = 0
 
 """"""""""""""""
+" => transShell"
+""""""""""""""""
+let g:trans_bin = "~/.vim"
+
+""""""""""""""""
 " => Ctags     "
 """"""""""""""""
 " Ctrl+] - go to definition
@@ -611,3 +617,21 @@ function! CompileAndRun()
 endfunction
 
 nnoremap <leader>c <ESC>:w!<CR>:call CompileAndRun()<CR>
+
+function! s:ExecuteInShell(command)
+  let command = join(map(split(a:command), 'expand(v:val)'))
+  let winnr = bufwinnr('^' . command . '$')
+  silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
+  setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
+  echo 'Execute ' . command . '...'
+  silent! execute 'silent %!'. command
+  silent! execute 'resize ' . line('$')
+  silent! redraw
+  silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
+  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+  echo 'Shell command ' . command . ' executed.'
+  if getchar()
+    silent! execute ':q!'
+  endif
+endfunction
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
