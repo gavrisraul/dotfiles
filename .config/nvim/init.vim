@@ -223,31 +223,31 @@ set guicursor=
 set cul
 set colorcolumn=+1
 
-" highlight ColorColumn guibg=DarkRed
-" highlight NonText gui=bold guibg=none guifg=DarkRed
-" highlight LineNr gui=bold,italic guibg=Grey23
-" highlight ColumnNr gui=bold,italic guibg=Grey23
-" highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red
-" highlight CursorLine gui=bold,italic guibg=Grey19
-" highlight CursorColumn gui=bold,italic guibg=Grey19
-" highlight Search guibg=Black guifg=DarkOrange
-" autocmd InsertEnter * highlight CursorLine guibg=Grey19
-" autocmd InsertLeave * highlight CursorLine guibg=DarkRed
-" autocmd InsertEnter * highlight CursorColumn guibg=Grey19
-" autocmd InsertLeave * highlight CursorColumn guibg=DarkRed
+highlight ColorColumn guibg=DarkRed
+highlight NonText gui=bold guibg=none guifg=DarkRed
+highlight LineNr gui=bold,italic guibg=Grey23
+highlight ColumnNr gui=bold,italic guibg=Grey23
+highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red
+highlight CursorLine gui=bold,italic guibg=Grey19
+highlight CursorColumn gui=bold,italic guibg=Grey19
+highlight Search guibg=Black guifg=DarkOrange
+autocmd InsertEnter * highlight CursorLine guibg=Grey19
+autocmd InsertLeave * highlight CursorLine guibg=DarkRed
+autocmd InsertEnter * highlight CursorColumn guibg=Grey19
+autocmd InsertLeave * highlight CursorColumn guibg=DarkRed
 
-highlight ColorColumn ctermbg=DarkRed
-highlight NonText cterm=bold ctermbg=none ctermfg=DarkRed
-highlight LineNr cterm=bold,italic ctermbg=237
-highlight ColumnNr cterm=bold,italic ctermbg=237
-highlight StatusLine cterm=bold,italic ctermbg=237 ctermfg=Red
-highlight CursorLine cterm=bold,italic ctermbg=236
-highlight CursorColumn cterm=bold,italic ctermbg=236
-highlight Search ctermbg=Black ctermfg=208
-autocmd InsertEnter * highlight CursorLine ctermbg=236
-autocmd InsertLeave * highlight CursorLine ctermbg=DarkRed
-autocmd InsertEnter * highlight CursorColumn ctermbg=236
-autocmd InsertLeave * highlight CursorColumn ctermbg=DarkRed
+" highlight ColorColumn ctermbg=DarkRed
+" highlight NonText cterm=bold ctermbg=none ctermfg=DarkRed
+" highlight LineNr cterm=bold,italic ctermbg=237
+" highlight ColumnNr cterm=bold,italic ctermbg=237
+" highlight StatusLine cterm=bold,italic ctermbg=237 ctermfg=Red
+" highlight CursorLine cterm=bold,italic ctermbg=236
+" highlight CursorColumn cterm=bold,italic ctermbg=236
+" highlight Search ctermbg=Black ctermfg=208
+" autocmd InsertEnter * highlight CursorLine ctermbg=236
+" autocmd InsertLeave * highlight CursorLine ctermbg=DarkRed
+" autocmd InsertEnter * highlight CursorColumn ctermbg=236
+" autocmd InsertLeave * highlight CursorColumn ctermbg=DarkRed
 
 set encoding=utf-8 " Encoding
 
@@ -564,7 +564,7 @@ if exists('$TMUX')
     if has('nvim')
         set termguicolors
     else
-        set term=screen-256color
+        set term=xterm-256color
     endif
 endif
 
