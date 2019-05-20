@@ -42,7 +42,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/Yggdroot/indentLine'
     Plug 'https://github.com/w0rp/ale'
     Plug 'https://github.com/mbbill/undotree'
-    Plug 'https://github.com/justinmk/vim-sneak'
+    " Plug 'https://github.com/justinmk/vim-sneak'
     Plug 'https://github.com/easymotion/vim-easymotion'
     Plug 'https://github.com/google/vim-searchindex'
     Plug 'https://github.com/mhinz/vim-signify'
@@ -305,6 +305,8 @@ let g:NERDTreeDirArrowCollapsible = '🤣 ▾'
 set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
+                          \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
@@ -444,7 +446,7 @@ nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 let g:projectA_path="/path/to/A"
 
 function! SS(toSearch)
-    execute "Ack ".a:toSearch." ".g:projectA_path
+    execute "Ack! ".a:toSearch." ".g:projectA_path
 endfunction
 
 """""""""""""""""""
