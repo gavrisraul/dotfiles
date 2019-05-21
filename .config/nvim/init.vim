@@ -59,6 +59,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/terryma/vim-expand-region'
     Plug 'https://github.com/tpope/vim-repeat'
     Plug 'https://github.com/szw/vim-g'
+    Plug 'https://github.com/chrisbra/NrrwRgn'
     " pip3 install pynvim --upgrade | :UpdateRemotePlugins
     Plug 'https://github.com/numirias/semshi', { 'do': ':UpdateRemotePlugins' }
     Plug 'https://github.com/echuraev/translate-shell.vim', { 'do': 'wget -O ~/.vim/trans git.io/trans && chmod +x ~/.vim/trans' }
@@ -285,6 +286,11 @@ nnoremap <leader><space> :noh<cr> " clear search highlights
 "             Plugins              "
 """"""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""
+" => NrrwRgn        "
+"""""""""""""""""""""
+map <leader>nrr :NR!<CR>
+
 """"""""""""""""""""""
 " => NerdTree        "
 """"""""""""""""""""""
@@ -503,7 +509,8 @@ let g:trans_bin = "~/.vim"
 " Ctrl+T - Jump back from the definition.
 " Ctrl+W Ctrl+] - Open the definition in a horizontal split
 
-" map <F11> :!ctags -R -f ./tags $VIRTUAL_ENV/lib/python/site-packages<CR>
+" map <F12> :!ctags -R -f ./tags $VIRTUAL_ENV/lib/python<CR>
+" set tags=./tags,tags;
 
 " Open the definition in a new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
