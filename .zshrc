@@ -40,8 +40,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-export EDITOR='vim'
-# export EDITOR='nvim'
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -77,3 +77,5 @@ alias rg='nvim'
 alias please=sudo
 # Key bindings
 bindkey '^ ' autosuggest-accept # ctrl-space
+
+source `which virtualenvwrapper.sh`
