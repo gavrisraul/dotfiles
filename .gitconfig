@@ -1,0 +1,19 @@
+[user]
+	name =
+	email =
+[github]
+	user =
+[diff]
+	tool = vimdiff3
+[merge]
+	tool = vimdiff3
+[difftool]
+    prompt = false
+[alias]
+    d = difftool
+[mergetool]
+    prompt = true
+[mergetool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool "vimdiff3"]
+	path = nvim
