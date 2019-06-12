@@ -221,6 +221,8 @@ bar {
 # xinput list-props <device_id>
 # xinput set-prop <device_id> <prop_id> 1
 exec xinput set-prop 14 285 1 # don't forget to change this
+exec xinput set-prop 11 285 1
+exec xinput set-prop 12 185 1
 
 # Enable sound buttons for laptops alsamixer pulseaudio pavucontrol
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 3%+ unmute"
@@ -251,12 +253,14 @@ exec_always --no-startup-id feh --randomize --bg-fill ~/.wallpapers/* --randomiz
 exec --no-startup-id compton -f -b
 
 # workspaces assignments
-# assign [class="^URxvt$"] $ws1
-# assign [class="^code-oss$"] $ws3
-# assign [class="^Google-chrome$"] $ws4
-# assign [class="^Firefox$"] $ws5
-# assign [class="^Google Play Music Desktop Player$"] $ws6
-# assign [class="^whats-app-nativefier-d52542$"] $ws8
-# assign [class="^Thunar$"] $ws9
-# exec_always urxvt
-# exec_always google-chrome-stable
+assign [class="Google-chrome"] → $ws3
+exec google-chrome
+
+assign [class="konsole"] → $ws1
+exec konsole
+
+assign [class="Google Play Music Desktop Player"] → $ws5
+exec google-play-music-desktop-player
+
+assign [class="Slack"] → $ws7
+exec slack

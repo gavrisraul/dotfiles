@@ -10,7 +10,7 @@ libxcb-randr0 libxcb-xinerama0-dev libxcb-xkb-dev libxcb-image0-dev \
 libxcb-util-dev libxkbcommon-x11-dev libjpeg-turbo8-dev libpam0g-dev \
 fonts-font-awesome fonts-firacode arandr libxcb-composite0-dev libjpeg-dev \
 x11-xserver-utils libpython3.6 numix-icon-theme-circle numix-gtk-theme \
-imagemagick
+imagemagick libappindicator1 libindicator7 libgconf2-4 konsole compton
 
 
 sudo chmod u+s /usr/bin/brightnessctl
@@ -101,3 +101,7 @@ rm -rf .git README.md LICENSE
 cp -ra . /home/rg/
 cd
 rm -rf dotfiles
+
+
+# pip install pylint flake8 pylama
+# pip3 install pynvim --upgrade
