@@ -235,8 +235,8 @@ bindsym XF86MonBrightnessDown exec "brightnessctl s 125-"
 exec xclip -o | xclip -selection clipboard -i
 
 # Lock i3 screen
-bindsym $mod+p exec i3lock --color 475263
-# bindsym $mod+p exec --no-startup-id /bin/betterlocki3lock
+# /usr/bin/betterlocki3lock
+bindsym $mod+p exec --no-startup-id betterlocki3lock
 
 # change resolution on enter
 # exec --no-startup-id resolution
