@@ -15,13 +15,18 @@
 " cd ..
 " rm -rf fonts
 
+" sudo apt-get install texmaker
+" sudo apt-get install texlive-full
+
 set nocompatible " Set compatibility to vim only
 let mapleader = "," " With a map leader it's possible to do extra key combinations
 " set shell=/usr/share/zsh
 set clipboard=unnamedplus " Let vim copy or cut text to system register
-filetype off " Helps force plug-ins to load correctly when it is turned back on below
+filetype plugin off " Helps force plug-ins to load correctly when it is turned back on below
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'https://github.com/xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+    Plug 'https://github.com/apalmer1377/factorus'
     Plug 'https://github.com/vim-airline/vim-airline'
     Plug 'https://github.com/vim-airline/vim-airline-themes'
     Plug 'https://github.com/ludovicchabant/vim-gutentags'
@@ -76,7 +81,8 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " Enable filetype plugins
-filetype indent on
+" filetype indent on
+filetype indent off
 filetype plugin on
 
 map <leader>s :source ~/.vimrc<CR>
@@ -142,6 +148,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+map <C-down> <C-W>j
+map <C-up> <C-W>k
+map <C-left> <C-W>h
+map <C-right> <C-W>l
+
 " Get rid of capslock and map it to escape
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
@@ -194,6 +205,7 @@ set pastetoggle=<F2>
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>q :q!<cr>
 
 set textwidth=79
 set nowrap
@@ -449,7 +461,7 @@ nmap <leader>a :tab split<CR>:Ack ""<Left>
 " Immediately search for the work under the cursor in a new tab
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-let g:projectA_path="/path/to/A"
+let g:projectA_path="/home/rg/.virtualenvs/scraping_env"
 
 function! SS(toSearch)
     execute "Ack! ".a:toSearch." ".g:projectA_path
@@ -509,13 +521,22 @@ let g:trans_bin = "~/.vim"
 " Ctrl+T - Jump back from the definition.
 " Ctrl+W Ctrl+] - Open the definition in a horizontal split
 
-" map <F12> :!ctags -R -f ./tags $VIRTUAL_ENV/lib/python<CR>
+map <F10> :!ctags -R -f ./tags /home/rg/.virtualenvs/scraping_env<CR>
+map <F12> :!ctags -R .<CR>
 " set tags=./tags,tags;
 
 " Open the definition in a new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Open the definition in a vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+"""""""""""""""
+" => UltiSnips"
+"""""""""""""""
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<F4>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 """"""""""""""""""""""
 " => Python section  "
