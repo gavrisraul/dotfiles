@@ -105,3 +105,4 @@ rm -rf dotfiles
 
 # pip install pylint flake8 pylama
 # pip3 install pynvim --upgrade
+# sudo chown -R $(whoami) ~/.npm
