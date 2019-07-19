@@ -21,7 +21,7 @@ elif custom_strength >= 81 and custom_strength <= 90:
 elif custom_strength >= 91:
     percent = '15%'
 
-print(f'wifi   {wifi_name} strength 📡 {wifi_signal_strength}/{percent}')
+print(f'wifi   {wifi_name} strength   {wifi_signal_strength}/{percent}')
 #-30dbm -> %100
 #-50dbm -> %90
 #-60dbm -> %80
