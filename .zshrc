@@ -3,12 +3,12 @@
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux
+# fi
 
 # https://github.com/riyadhalnur/quote-cli
-COMMANDS=("fortune" "quote")
+COMMANDS=("fortune" "quote") # for arch path is "/usr/share/cows"
 $(shuf -n1 -e "${COMMANDS[@]}") | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1) | lolcat
 
 # Path to your oh-my-zsh installation.
