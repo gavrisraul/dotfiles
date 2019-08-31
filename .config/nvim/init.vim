@@ -1,10 +1,10 @@
+" # pip install pylint flake8 pylama
+" # pip3 install pynvim --upgrade
+" # sudo chown -R $(whoami) ~/.npm
+
 " sudo apt install exuberant-ctags
 " sudo apt install build-essential cmake python3-dev # for YCM for ubuntu
-" sudo apt install ack " for Ack plugin
-
-" if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-"   exec tmux
-" fi
+" sudo apt install ack
 
 " # clone
 " git clone https://github.com/powerline/fonts.git --depth=1
@@ -15,56 +15,72 @@
 " cd ..
 " rm -rf fonts
 
-" sudo apt-get install texmaker
-" sudo apt-get install texlive-full
+" # sudo apt-get install texmaker
+" # sudo apt-get install texlive-full
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible " Set compatibility to vim only
-let mapleader = "," " With a map leader it's possible to do extra key combinations
-" set shell=/usr/share/zsh
-set clipboard=unnamedplus " Let vim copy or cut text to system register
-filetype plugin off " Helps force plug-ins to load correctly when it is turned back on below
+" Set compatibility to vim only, this must be first
+set nocompatible
+
+""""""""""""""""""""
+" => Vim-Plug      "
+""""""""""""""""""""
+
+" Helps force plug-ins to load correctly when it is turned back on below
+filetype plugin off
 
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'https://github.com/xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-    Plug 'https://github.com/apalmer1377/factorus'
+    Plug 'https://github.com/dhruvasagar/vim-zoom'
+    Plug 'https://github.com/HendrikPetertje/vimify'
+    " Plug 'https://github.com/hienvd/vim-stackoverflow'
+    Plug 'https://github.com/mickaobrien/vim-stackoverflow'
+    " Plug 'https://github.com/vim-vdebug/vdebug'
+    Plug 'https://github.com/yuttie/comfortable-motion.vim'
+    Plug 'https://github.com/vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+    Plug 'https://github.com/sheerun/vim-polyglot'
+    Plug 'https://github.com/mhinz/vim-startify'
+    Plug 'https://github.com/morhetz/gruvbox'
     Plug 'https://github.com/vim-airline/vim-airline'
     Plug 'https://github.com/vim-airline/vim-airline-themes'
-    Plug 'https://github.com/ludovicchabant/vim-gutentags'
-    Plug 'https://github.com/christoomey/vim-tmux-navigator'
-    Plug 'https://github.com/mhinz/vim-startify'
-    Plug 'https://github.com/mileszs/ack.vim'
-    Plug 'https://github.com/morhetz/gruvbox'
+    Plug 'https://github.com/ryanoasis/vim-devicons'
     Plug 'https://github.com/scrooloose/nerdtree'
-    Plug 'https://github.com/kien/ctrlp.vim'
-    Plug 'https://github.com/terryma/vim-multiple-cursors'
     Plug 'https://github.com/majutsushi/tagbar'
-    Plug 'https://github.com/kien/rainbow_parentheses.vim'
+    Plug 'https://github.com/ludovicchabant/vim-gutentags'
+    Plug 'https://github.com/mileszs/ack.vim'
+    Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+    Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'https://github.com/junegunn/fzf.vim'
     Plug 'https://github.com/tpope/vim-surround'
+    Plug 'https://github.com/tpope/vim-fugitive'
+    Plug 'https://github.com/w0rp/ale'
+    Plug 'https://github.com/neoclide/coc.nvim', { 'branch': 'release' }
+    Plug 'https://github.com/junegunn/goyo.vim'
+    Plug 'https://github.com/SirVer/ultisnips'
+    Plug 'https://github.com/honza/vim-snippets'
+    " Plug 'https://github.com/airblade/vim-rooter'
+    Plug 'https://github.com/junegunn/vim-easy-align'
+    " Plug 'https://github.com/xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+    Plug 'https://github.com/lervag/vimtex'
+    Plug 'https://github.com/apalmer1377/factorus'
+    Plug 'https://github.com/christoomey/vim-tmux-navigator'
+    Plug 'https://github.com/terryma/vim-multiple-cursors'
+    Plug 'https://github.com/luochen1990/rainbow'
     Plug 'https://github.com/jiangmiao/auto-pairs'
     Plug 'https://github.com/scrooloose/nerdcommenter'
-    Plug 'https://github.com/tpope/vim-fugitive'
-    Plug 'https://github.com/junegunn/goyo.vim'
     Plug 'https://github.com/Yggdroot/indentLine'
-    Plug 'https://github.com/w0rp/ale'
     Plug 'https://github.com/mbbill/undotree'
-    " Plug 'https://github.com/justinmk/vim-sneak'
     Plug 'https://github.com/easymotion/vim-easymotion'
     Plug 'https://github.com/google/vim-searchindex'
     Plug 'https://github.com/mhinz/vim-signify'
-    " Plug 'https://github.com/severin-lemaignan/vim-minimap'
-    " Plug 'https://github.com/haya14busa/vim-gtrans'
-    Plug 'https://github.com/SirVer/ultisnips'
-    Plug 'https://github.com/honza/vim-snippets'
-    " Plug 'https://github.com/airblade/vim-gitgutter'
+    Plug 'https://github.com/rhysd/git-messenger.vim'
     Plug 'https://github.com/vim-scripts/SearchComplete'
-    " Plug 'https://github.com/Shougo/deoplete.nvim'
-    " Plug 'https://github.com/neoclide/coc.nvim'
-    " Plug 'https://github.com/hdima/python-syntax'
+    Plug 'https://github.com/severin-lemaignan/vim-minimap'
     Plug 'https://github.com/vim-python/python-syntax'
     Plug 'https://github.com/terryma/vim-expand-region'
     Plug 'https://github.com/tpope/vim-repeat'
     Plug 'https://github.com/szw/vim-g'
     Plug 'https://github.com/chrisbra/NrrwRgn'
+    Plug 'https://github.com/simeji/winresizer'
     " pip3 install pynvim --upgrade | :UpdateRemotePlugins
     Plug 'https://github.com/numirias/semshi', { 'do': ':UpdateRemotePlugins' }
     Plug 'https://github.com/echuraev/translate-shell.vim', { 'do': 'wget -O ~/.vim/trans git.io/trans && chmod +x ~/.vim/trans' }
@@ -74,21 +90,24 @@ call plug#begin('~/.config/nvim/plugged')
         " - status: 'installed', 'updated', or 'unchanged'
         " - force:  set on PlugInstall! or PlugUpdate!
         if a:info.status == 'installed' || a:info.force
-            !./install.py
+            " --java-completer beware you need jdk8
+            " --cs-completer --go-completer --ts-completer -rust-completer
+            !./install.py --clang-completer
         endif
     endfunction
+    " https://github.com/ycm-core/YouCompleteMe
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 call plug#end()
 
 " Enable filetype plugins
-" filetype indent on
-filetype indent off
 filetype plugin on
+filetype indent on
 
-map <leader>s :source ~/.vimrc<CR>
-map <leader>. :@:<CR> " repeat even commands that have a count!
-map <leader>r :%s// " search and replace faster also empty string is \=''
+""""""""""""""""""""
+" => General config"
+""""""""""""""""""""
 
+" Syntax highlight
 syntax enable " Enable syntax highlighting
 set t_Co=256
 set background=dark
@@ -98,6 +117,21 @@ let g:gruvbox_bold=1
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 
+let mapleader = "," " With a map leader it's possible to do extra key combinations
+" set shell=/usr/share/zsh
+set clipboard=unnamedplus " Let vim copy or cut text to system register
+map <leader>s :source ~/.vimrc<CR>
+" repeat even commands that have a count!
+map <leader>. :@:<CR>
+" search and replace faster also empty string is \=''
+map <leader>r :%s//
+map <leader>t :UndotreeToggle<CR>
+
+" set exrc " enable usage of additional .vimrc files from working directory
+" set secure " prohibit .vimrc files to execute shell, create files, etc...
+" don't lose selection while tabbing a block of code
+xnoremap <  <gv
+xnoremap >  >gv
 set nrformats= " Treat any number as decimal
 set path+=** " Search into subfolders
 set autoread " Set to auto read when a file is changed from the outside
@@ -113,6 +147,16 @@ set hlsearch " Highlight matching search patterns
 set mouse=a " Enable mouse
 set wildmenu " Enable the wild menu
 set wildmode=longest:full
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 set cmdheight=1 " Height of the command bar
 set lazyredraw " Don't redraw while executing macros (good performance config)
 set magic " For regex turn magic on
@@ -121,13 +165,16 @@ set foldcolumn=1 " Add a bit extra margin to the left
 set ffs=unix,dos,mac " Use Unix as the standard file type
 set undolevels=1000 "1000 undos
 set updatecount=100 "switch every 100 chars
+set updatetime=300
+set shortmess+=c
 set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn backup off, since most stuff is in SVN, git etc anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " 1 tab == 4 spaces
+set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 set expandtab " Use spaces instead of tabs
@@ -176,11 +223,6 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
 map <leader>t<leader> :tabnext<cr>
 
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -207,12 +249,12 @@ set pastetoggle=<F2>
 nmap <leader>w :w!<cr>
 nmap <leader>q :q!<cr>
 
-set textwidth=79
+set textwidth=80
 set nowrap
 set scrolloff=5 " Keep at least 5 lines above/below
 set sidescrolloff=3 " Keep at least 3 lines left/right
-set backspace=indent,eol,start " Fixes common backspace problems
-set whichwrap+=<,>,h,l
+set sidescroll=1
+set backspace=indent,eol,start " Fixes common backspace problems, allow backspace in insert mode
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -231,36 +273,59 @@ set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [line=%l\ column=%c]\ [bu
 " set guicursor=a:blinkon100 " Disable neo-vim cursor shape and make it blink
 set guicursor=
 
-" gui guibg guifg
-" cterm ctermbg ctermfg
 set cul
 set colorcolumn=+1
 
-highlight ColorColumn guibg=DarkRed
-highlight NonText gui=bold guibg=none guifg=DarkRed
-highlight LineNr gui=bold,italic guibg=Grey23
-highlight ColumnNr gui=bold,italic guibg=Grey23
-highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red
-highlight CursorLine gui=bold,italic guibg=Grey19
-highlight CursorColumn gui=bold,italic guibg=Grey19
-highlight Search guibg=Black guifg=DarkOrange
-autocmd InsertEnter * highlight CursorLine guibg=Grey19
-autocmd InsertLeave * highlight CursorLine guibg=DarkRed
-autocmd InsertEnter * highlight CursorColumn guibg=Grey19
-autocmd InsertLeave * highlight CursorColumn guibg=DarkRed
+set termguicolors
+" if exists('$TMUX')
+"     if has('nvim')
+"         set termguicolors
+"     else
+"         set term=xterm-256color
+"     endif
+" endif
 
-" highlight ColorColumn ctermbg=DarkRed
-" highlight NonText cterm=bold ctermbg=none ctermfg=DarkRed
-" highlight LineNr cterm=bold,italic ctermbg=237
-" highlight ColumnNr cterm=bold,italic ctermbg=237
-" highlight StatusLine cterm=bold,italic ctermbg=237 ctermfg=Red
-" highlight CursorLine cterm=bold,italic ctermbg=236
-" highlight CursorColumn cterm=bold,italic ctermbg=236
-" highlight Search ctermbg=Black ctermfg=208
-" autocmd InsertEnter * highlight CursorLine ctermbg=236
-" autocmd InsertLeave * highlight CursorLine ctermbg=DarkRed
-" autocmd InsertEnter * highlight CursorColumn ctermbg=236
-" autocmd InsertLeave * highlight CursorColumn ctermbg=DarkRed
+" gui guibg guifg
+" cterm ctermbg ctermfg
+if has('nvim')
+    highlight ColorColumn guibg=DarkRed
+    highlight NonText gui=bold guibg=none guifg=DarkRed
+    highlight LineNr gui=bold,italic guibg=Grey23
+    highlight ColumnNr gui=bold,italic guibg=Grey23
+    highlight StatusLine gui=bold,italic guibg=Grey23 guifg=Red
+    highlight CursorLine gui=bold,italic guibg=DarkRed
+    highlight CursorColumn gui=bold,italic guibg=DarkRed
+    highlight Search guibg=Black guifg=DarkOrange
+    augroup ChangeRulersNVim
+        autocmd!
+        autocmd InsertEnter * highlight CursorLine guibg=Grey19
+        autocmd InsertLeave * highlight CursorLine guibg=DarkRed
+        autocmd InsertEnter * highlight CursorColumn guibg=Grey19
+        autocmd InsertLeave * highlight CursorColumn guibg=DarkRed
+    augroup END
+elseif !has('nvim')
+    highlight ColorColumn ctermbg=88
+    highlight NonText cterm=bold ctermbg=NONE ctermfg=88
+    highlight LineNr cterm=bold,italic ctermbg=237
+    highlight ColumnNr cterm=bold,italic ctermbg=237
+    highlight StatusLine cterm=bold,italic ctermbg=237 ctermfg=196
+    " highlight CursorLine cterm=bold,italic ctermbg=88
+    highlight CursorLine cterm=bold,italic guibg=DarkRed
+    " highlight CursorColumn cterm=bold,italic ctermbg=88
+    highlight CursorColumn cterm=bold,italic guibg=DarkRed
+    highlight Search ctermbg=0 ctermfg=208
+    augroup ChangeRulersVim
+        autocmd!
+        " autocmd InsertEnter * highlight CursorLine ctermbg=236
+        " autocmd InsertLeave * highlight CursorLine ctermbg=88
+        " autocmd InsertEnter * highlight CursorColumn ctermbg=236
+        " autocmd InsertLeave * highlight CursorColumn ctermbg=88
+        autocmd InsertEnter * highlight CursorLine guibg=Grey19
+        autocmd InsertLeave * highlight CursorLine guibg=DarkRed
+        autocmd InsertEnter * highlight CursorColumn guibg=Grey19
+        autocmd InsertLeave * highlight CursorColumn guibg=DarkRed
+    augroup END
+endif
 
 set encoding=utf-8 " Encoding
 
@@ -273,30 +338,66 @@ set hidden " A buffer becomes hidden when it is abandoned
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-" Automatically save and load folds
-" augroup remember_folds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
-"
-" augroup remember_folds
-"   autocmd!
-"   au BufWinLeave ?* mkview 1
-"   au BufWinEnter ?* silent! loadview 1
-" augroup END
-
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-nnoremap <leader><space> :noh<cr> " clear search highlights
+let python_highlight_all = 1
 
 """"""""""""""""""""""""""""""""""""
 "             Plugins              "
 """"""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""
+" => Coc.nvim        "
+"""""""""""""""""""""
+
+" https://github.com/coc-extensions/coc-omnisharp
+" https://github.com/iamcco/coc-vimlsp
+" https://github.com/neoclide/coc-highlight
+" https://github.com/neoclide/coc-html
+" https://github.com/neoclide/coc-python
+" https://github.com/fannheyward/coc-texlab
+" https://github.com/neoclide/coc-java
+" https://github.com/neoclide/coc-snippets
+" https://github.com/neoclide/coc-rls
+" https://github.com/neoclide/coc-json
+" https://github.com/neoclide/coc-tsserver
+" https://github.com/neoclide/coc-tslint-plugin
+" https://github.com/neoclide/coc-css
+" https://github.com/neoclide/coc-yaml
+" https://github.com/neoclide/coc-emmet
+" https://github.com/neoclide/coc-tabnine
+" https://github.com/neoclide/coc-sources
+" --------------------------------------
+" https://github.com/fannheyward/coc-marketplace
+" https://github.com/josa42/coc-lua
+" https://github.com/neoclide/coc-vimtex
+let g:coc_global_extensions = [
+    \ 'coc-omnisharp',
+    \ 'coc-vimlsp',
+    \ 'coc-highlight',
+    \ 'coc-html',
+    \ 'coc-python',
+    \ 'coc-texlab',
+    \ 'coc-java',
+    \ 'coc-snippets',
+    \ 'coc-rls',
+    \ 'coc-json',
+    \ 'coc-tsserver',
+    \ 'coc-tslint-plugin',
+    \ 'coc-css',
+    \ 'coc-yaml',
+    \ 'coc-emmet',
+    \ 'coc-tabnine',
+    \ 'coc-gocode',
+    \ 'coc-word',
+    \ 'coc-marketplace',
+    \ 'coc-lua',
+    \ 'coc-vimtex',
+    \ ]
 
 """""""""""""""""""""
 " => NrrwRgn        "
@@ -360,32 +461,37 @@ let g:tagbar_indent=1
 """"""""""""""""""
 " => Rainbow     "
 """"""""""""""""""
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_conf = {
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\   'guis': [''],
+\   'cterms': [''],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'markdown': {
+\           'parentheses_options': 'containedin=markdownCode contained',
+\       },
+\       'lisp': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'haskell': {
+\           'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+\       },
+\       'vim': {
+\           'parentheses_options': 'containedin=vimFuncBody',
+\       },
+\       'perl': {
+\           'syn_name_prefix': 'perlBlockFoldRainbow',
+\       },
+\       'stylus': {
+\           'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
+\       },
+\       'css': 0,
+\   },
+\}
 
 """"""""""""""""""""""
 " => Surround        "
@@ -433,6 +539,7 @@ function! s:goyo_enter()
   set noshowmode
   set noshowcmd
   set scrolloff=999
+  map <leader>z :Goyo! <CR>
 endfunction
 
 function! s:goyo_leave()
@@ -441,6 +548,7 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set scrolloff=5
+  map <leader>z :Goyo <CR>
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
@@ -461,7 +569,7 @@ nmap <leader>a :tab split<CR>:Ack ""<Left>
 " Immediately search for the work under the cursor in a new tab
 nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
-let g:projectA_path="/home/rg/.virtualenvs/scraping_env"
+let g:projectA_path="/home/rg"
 
 function! SS(toSearch)
     execute "Ack! ".a:toSearch." ".g:projectA_path
@@ -473,21 +581,6 @@ endfunction
 let g:airline_powerline_fonts = 1
 let g:airline_theme='kalisi' " random, gruvbox solarized, badwolf, kalisi
 let g:airline#extensions#tabline#enabled = 1
-
-" function! AccentDemo()
-"   let keys = ['n', 'e', 'o', 'v', 'i', 'm']
-"   for k in keys
-"     call airline#parts#define_text(k, k)
-"   endfor
-"   call airline#parts#define_accent('n', 'red')
-"   call airline#parts#define_accent('e', 'red')
-"   call airline#parts#define_accent('o', 'red')
-"   call airline#parts#define_accent('v', 'red')
-"   call airline#parts#define_accent('i', 'red')
-"   call airline#parts#define_accent('m', 'red')
-"   let g:airline_section_a = airline#section#create(keys)
-" endfunction
-" autocmd VimEnter * call AccentDemo()
 
 """"""""""""""""""
 " => Ale.vim     "
@@ -522,9 +615,9 @@ let g:trans_bin = "~/.vim"
 " Ctrl+T - Jump back from the definition.
 " Ctrl+W Ctrl+] - Open the definition in a horizontal split
 
-map <F10> :!ctags -R -f ./tags /home/rg/.virtualenvs/scraping_env<CR>
+map <F10> :!ctags -R -f ./tags /home/rg<CR>
 map <F12> :!ctags -R .<CR>
-" set tags=./tags,tags;
+set tags+=./tags;
 
 " Open the definition in a new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -539,88 +632,23 @@ let g:UltiSnipsExpandTrigger="<F4>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-""""""""""""""""""""""
-" => Python section  "
-""""""""""""""""""""""
-let python_highlight_all = 1
-au FileType python syn keyword pythonDecorator True None False self
+"""""""""""""""
+" => Spotify  "
+"""""""""""""""
+let g:spotify_token='NGUzZTJhMGQ4MGZlNDZiNTlkOTk0NmVlMjY2OGEwZjI6MzQ5NmFhMmQxOWI4NGIzZDk4YjRlYjEzZWFmODRkNTE='
 
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-au BufNewFile,BufRead *.mako set ft=mako
-
-au FileType python map <buffer> F :set foldmethod=indent<cr>
-
-au FileType python inoremap <buffer> $r return
-au FileType python inoremap <buffer> $i import
-au FileType python inoremap <buffer> $p print
-au FileType python inoremap <buffer> $f # --- <esc>a
-au FileType python map <buffer> <leader>1 /class
-au FileType python map <buffer> <leader>2 /def
-au FileType python map <buffer> <leader>C ?class
-au FileType python map <buffer> <leader>D ?def
-au FileType python set cindent
-au FileType python set cinkeys-=0#
-au FileType python set indentkeys-=0#
-
-""""""""""""""""""""""""""
-" => Javascript section  "
-""""""""""""""""""""""""""
-au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
-
-au FileType javascript imap <c-t> $log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-
-au FileType javascript inoremap <buffer> $r return
-au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
-
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
-
-"""""""""""""""""""""
-" => Shell section  "
-"""""""""""""""""""""
-if exists('$TMUX')
-    if has('nvim')
-        set termguicolors
-    else
-        set term=xterm-256color
-    endif
-endif
-
+"""""""""""""""
+" => Vim Latex"
+"""""""""""""""
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 """"""""""""""""""""""""""""""""""""
 "         HELPER FUNCTIONS         "
 """"""""""""""""""""""""""""""""""""
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
 
 function! CompileAndRun()
   write
@@ -646,7 +674,6 @@ function! CompileAndRun()
     !ghc -o a.out % && ./a.out && rm a.out
   endif
 endfunction
-
 nnoremap <leader>c <ESC>:w!<CR>:call CompileAndRun()<CR>
 
 function! s:ExecuteInShell(command)
@@ -666,3 +693,4 @@ function! s:ExecuteInShell(command)
   endif
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+

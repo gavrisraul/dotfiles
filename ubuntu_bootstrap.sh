@@ -101,8 +101,3 @@ rm -rf .git README.md LICENSE
 cp -ra . /home/rg/
 cd
 rm -rf dotfiles
-
-
-# pip install pylint flake8 pylama
-# pip3 install pynvim --upgrade
-# sudo chown -R $(whoami) ~/.npm

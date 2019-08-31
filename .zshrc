@@ -4,7 +4,7 @@
 
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   exec tmux
+#     exec tmux
 # fi
 
 # https://github.com/riyadhalnur/quote-cli
@@ -15,7 +15,8 @@ $(shuf -n1 -e "${COMMANDS[@]}") | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf 
 export ZSH=~/.oh-my-zsh
 export PATH="${PATH}:${HOME}/.local/bin/"
 
-ZSH_THEME="agnoster"
+# https://github.com/romkatv/powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=3
@@ -37,7 +38,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo extract)
 
 source $ZSH/oh-my-zsh.sh
 export EDITOR=/usr/bin/nvim
@@ -79,3 +80,14 @@ alias please=sudo
 bindkey '^ ' autosuggest-accept # ctrl-space
 
 source `which virtualenvwrapper.sh`
+
+PATH="/home/rg/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/rg/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/rg/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/rg/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/rg/perl5"; export PERL_MM_OPT;
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
