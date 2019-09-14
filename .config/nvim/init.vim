@@ -40,6 +40,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/sheerun/vim-polyglot'
     Plug 'https://github.com/mhinz/vim-startify'
     Plug 'https://github.com/morhetz/gruvbox'
+    Plug 'https://github.com/dracula/vim', { 'as': 'dracula' }
+    Plug 'https://github.com/chriskempson/base16-vim'
+    Plug 'https://github.com/joshdick/onedark.vim'
+    Plug 'https://github.com/rojspencer/vim-colorminder'
     Plug 'https://github.com/vim-airline/vim-airline'
     Plug 'https://github.com/vim-airline/vim-airline-themes'
     Plug 'https://github.com/ryanoasis/vim-devicons'
@@ -115,7 +119,13 @@ let g:gruvbox_termcolors=256
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+let g:colorminder_scheme_default_gui='gruvbox'
+let g:colorminder_scheme_default_term='gruvbox'
+
+" colorscheme gruvbox
+
+" let g:molokai_original = 1 " If you prefer the scheme to match the original monokai
+" let g:rehash256 = 1 " For color terminals which attempts to bring the 256 color version
 
 let mapleader = "," " With a map leader it's possible to do extra key combinations
 " set shell=/usr/share/zsh
