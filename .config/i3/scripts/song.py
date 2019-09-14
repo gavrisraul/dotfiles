@@ -1,6 +1,10 @@
 import json
 import datetime
 import subprocess
+import time
+
+def _replace(element):
+    return element.replace("b'", '').replace('\\n', '').replace("'", '').replace('\\', '')
 
 output2 = subprocess.check_output("ps -u rg", shell=True)
 
@@ -9,24 +13,24 @@ if 'Google Play Mus' in str(output2):
 else:
     is_google_play_music = False
 
-if is_google_play_music:
-    output1 = subprocess.check_output("cat /home/rg/.config/Google\ Play\ Music\ Desktop\ Player/json_store/playback.json", shell=True)
-    music_dict = json.loads(output1)
+if 'spotify' in str(output2):
+    is_spotify = True
+else:
+    is_spotify = False
 
-    is_playing = music_dict['playing']
-    if is_playing:
-        is_playing = 'Playing'
-    else:
-        is_playing = 'Paused'
-    song_title = music_dict['song']['title']
-    song_artist = music_dict['song']['artist']
-    current_time = music_dict['time']['current']
-    total_time = music_dict['time']['total']
+if is_google_play_music and is_spotify:
+    print('only one player allowed')
 
-    current_time = str(datetime.timedelta(seconds=current_time//1000))
-    total_time = str(datetime.timedelta(seconds=total_time//1000))
+if is_google_play_music or is_spotify:
+    song_artist = _replace(str(subprocess.check_output("playerctl metadata --format '{{ artist }}'", shell=True)))
+    song_title = _replace(str(subprocess.check_output("playerctl metadata --format '{{ title }}'", shell=True)))
+    is_playing = _replace(str(subprocess.check_output("playerctl metadata --format '{{ status }}'", shell=True)))
+    total_time =  _replace(str(subprocess.check_output("playerctl metadata --format '{{ mpris:length }}'", shell=True)))
+    total_time = int(total_time)
+    #  current_time = check_current_time(total_time, is_playing)
+    #  current_time = str(datetime.timedelta(seconds=current_time))
+    total_time = str(datetime.timedelta(seconds=total_time//1000000))
 
-    #print(f'{song_artist} : {song_title} -> {current_time} / {total_time} {is_playing}')
-    print(song_artist + ' : ' + song_title + ' -> ' + current_time + ' / ' + total_time + ' ' + is_playing)
+    print(f'{song_artist} : {song_title} -> current_time / {total_time} {is_playing}')
 else:
     print('music')

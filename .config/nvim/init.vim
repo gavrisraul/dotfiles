@@ -1,24 +1,3 @@
-" # pip install pylint flake8 pylama
-" # pip3 install pynvim --upgrade
-" # sudo chown -R $(whoami) ~/.npm
-
-" sudo apt install exuberant-ctags
-" sudo apt install build-essential cmake python3-dev # for YCM for ubuntu
-" sudo apt install ack
-
-" # clone
-" git clone https://github.com/powerline/fonts.git --depth=1
-" # install
-" cd fonts
-" ./install.sh
-" # clean-up a bit
-" cd ..
-" rm -rf fonts
-
-" # sudo apt-get install texmaker
-" # sudo apt-get install texlive-full
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Set compatibility to vim only, this must be first
 set nocompatible
 
@@ -30,11 +9,15 @@ set nocompatible
 filetype plugin off
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'https://github.com/jeetsukumaran/vim-buffergator'
+    Plug 'https://github.com/dyng/ctrlsf.vim'
+    Plug 'https://github.com/wesQ3/vim-windowswap'
+    Plug 'https://github.com/godlygeek/tabular'
     Plug 'https://github.com/dhruvasagar/vim-zoom'
     Plug 'https://github.com/HendrikPetertje/vimify'
     " Plug 'https://github.com/hienvd/vim-stackoverflow'
     Plug 'https://github.com/mickaobrien/vim-stackoverflow'
-    " Plug 'https://github.com/vim-vdebug/vdebug'
+    Plug 'https://github.com/vim-vdebug/vdebug'
     Plug 'https://github.com/yuttie/comfortable-motion.vim'
     Plug 'https://github.com/vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
     Plug 'https://github.com/sheerun/vim-polyglot'
@@ -61,7 +44,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/junegunn/goyo.vim'
     Plug 'https://github.com/SirVer/ultisnips'
     Plug 'https://github.com/honza/vim-snippets'
-    " Plug 'https://github.com/airblade/vim-rooter'
+    Plug 'https://github.com/airblade/vim-rooter'
     Plug 'https://github.com/junegunn/vim-easy-align'
     " Plug 'https://github.com/xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'https://github.com/lervag/vimtex'
@@ -651,6 +634,7 @@ let g:spotify_token='NGUzZTJhMGQ4MGZlNDZiNTlkOTk0NmVlMjY2OGEwZjI6MzQ5NmFhMmQxOWI
 " => Vim Latex"
 """""""""""""""
 let g:tex_flavor='latex'
+let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
@@ -752,6 +736,5 @@ endfunction
 
  map <F8>        :call SwitchColor(1)<CR>
 imap <F8>   <Esc>:call SwitchColor(1)<CR>
-
  map <F7>      :call SwitchColor(-1)<CR>
 imap <F7> <Esc>:call SwitchColor(-1)<CR>

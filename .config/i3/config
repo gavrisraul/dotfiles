@@ -221,9 +221,7 @@ bar {
 # xinput list
 # xinput list-props <device_id>
 # xinput set-prop <device_id> <prop_id> 1
-exec xinput set-prop 14 285 1 # don't forget to change this
-exec xinput set-prop 11 285 1
-exec xinput set-prop 12 185 1
+exec xinput set-prop 14 297 1 # don't forget to change this
 
 # Enable sound buttons for laptops alsamixer pulseaudio pavucontrol
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 3%+ unmute"
@@ -256,7 +254,7 @@ exec --no-startup-id compton --config ~/.config/compton.conf -f -b
 # lets use dunst for notifications
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
-# workspaces assignments
+# workspaces assignments xprop
 assign [class="Google-chrome"] → $ws3
 exec google-chrome
 
@@ -265,6 +263,10 @@ exec google-chrome
 
 # assign [class="Google Play Music Desktop Player"] → $ws5
 # exec google-play-music-desktop-player
+# exec gpmdp
+
+assign [class="Spotify"] → $ws5
+exec spotify
 
 # assign [class="Slack"] → $ws7
 # exec slack
