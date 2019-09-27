@@ -10,7 +10,7 @@ filetype plugin off
 
 call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/yuki-ycino/fzf-preview.vim'
-    Plug 'https://github.com/junegunn/vim-slash'
+    Plug 'https://github.com/junegunn/limelight.vim'
     Plug 'https://github.com/junegunn/vim-easy-align'
     Plug 'https://github.com/jeetsukumaran/vim-buffergator'
     Plug 'https://github.com/dyng/ctrlsf.vim'
