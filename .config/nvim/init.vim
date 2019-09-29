@@ -9,10 +9,12 @@ set nocompatible
 filetype plugin off
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'https://github.com/yuki-ycino/fzf-preview.vim'
+    Plug 'https://github.com/junegunn/limelight.vim'
+    Plug 'https://github.com/junegunn/vim-easy-align'
     Plug 'https://github.com/jeetsukumaran/vim-buffergator'
     Plug 'https://github.com/dyng/ctrlsf.vim'
     Plug 'https://github.com/wesQ3/vim-windowswap'
-    Plug 'https://github.com/godlygeek/tabular'
     Plug 'https://github.com/dhruvasagar/vim-zoom'
     Plug 'https://github.com/HendrikPetertje/vimify'
     " Plug 'https://github.com/hienvd/vim-stackoverflow'
