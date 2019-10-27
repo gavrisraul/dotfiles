@@ -8,8 +8,8 @@
 # fi
 
 # https://github.com/riyadhalnur/quote-cli
-COMMANDS=("fortune" "quote") # for arch path is "/usr/share/cows"
-$(shuf -n1 -e "${COMMANDS[@]}") | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1) | lolcat
+COMMANDS=("fortune" "quote")
+$(shuf -n1 -e "${COMMANDS[@]}") | cowsay -f $(ls /usr/share/cows | shuf -n1) | lolcat
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh

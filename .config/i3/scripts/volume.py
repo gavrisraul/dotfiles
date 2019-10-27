@@ -16,5 +16,7 @@ elif custom_volume >= 20 and custom_volume <= 39:
     print(f'volume 奔{volume}')
 elif custom_volume >= 10 and custom_volume <= 19:
     print(f'volume  {volume}')
+elif custom_volume > 0 and custom_volume < 10:
+    print(f'volume ﱝ{volume}')
 elif custom_volume == 0:
     print(f'volume ﱝ {volume}')

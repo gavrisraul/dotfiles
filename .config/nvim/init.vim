@@ -9,6 +9,11 @@ set nocompatible
 filetype plugin off
 
 call plug#begin('~/.config/nvim/plugged')
+    Plug 'https://github.com/vim-scripts/dbext.vim'
+    Plug 'https://github.com/vim-scripts/DrawIt'
+    Plug 'https://github.com/voldikss/vim-floaterm'
+    Plug 'https://github.com/liuchengxu/vim-clap'
+    Plug 'https://github.com/MattesGroeger/vim-bookmarks'
     Plug 'https://github.com/yuki-ycino/fzf-preview.vim'
     Plug 'https://github.com/junegunn/limelight.vim'
     Plug 'https://github.com/junegunn/vim-easy-align'
@@ -16,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/dyng/ctrlsf.vim'
     Plug 'https://github.com/wesQ3/vim-windowswap'
     Plug 'https://github.com/dhruvasagar/vim-zoom'
-    Plug 'https://github.com/HendrikPetertje/vimify'
     " Plug 'https://github.com/hienvd/vim-stackoverflow'
     Plug 'https://github.com/mickaobrien/vim-stackoverflow'
     Plug 'https://github.com/vim-vdebug/vdebug'
@@ -28,7 +32,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/dracula/vim', { 'as': 'dracula' }
     Plug 'https://github.com/chriskempson/base16-vim'
     Plug 'https://github.com/joshdick/onedark.vim'
-    Plug 'https://github.com/rojspencer/vim-colorminder'
+    " Plug 'https://github.com/rojspencer/vim-colorminder'
     Plug 'https://github.com/vim-airline/vim-airline'
     Plug 'https://github.com/vim-airline/vim-airline-themes'
     Plug 'https://github.com/ryanoasis/vim-devicons'
@@ -627,10 +631,6 @@ let g:UltiSnipsExpandTrigger="<F4>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-"""""""""""""""
-" => Spotify  "
-"""""""""""""""
-let g:spotify_token='NGUzZTJhMGQ4MGZlNDZiNTlkOTk0NmVlMjY2OGEwZjI6MzQ5NmFhMmQxOWI4NGIzZDk4YjRlYjEzZWFmODRkNTE='
 
 """""""""""""""
 " => Vim Latex"

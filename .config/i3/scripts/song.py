@@ -34,3 +34,4 @@ if is_google_play_music or is_spotify:
     print(f'{song_artist} : {song_title} -> current_time / {total_time} {is_playing}')
 else:
     print('music')
+#playerctl metadata --format '{{ playerName }}: {{ artist }} - {{ title }} {{ duration(position) }}|{{ duration(mpris:length) }}'
