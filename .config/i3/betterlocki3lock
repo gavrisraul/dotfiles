@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /tmp
+sleep 1
 scrot lock.jpg
 betterlockscreen -w lock.jpg
 betterlockscreen -u lock.jpg
