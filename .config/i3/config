@@ -268,3 +268,9 @@ exec spotify
 
 # assign [class="Slack"] → $ws7
 # exec slack
+
+exec xautolock -detectsleep \
+  -time 1 -locker "betterlocki3lock" \
+  -notify 30 \
+  -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+
