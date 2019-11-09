@@ -5,6 +5,8 @@ for_window [class="^.*"] border pixel 0
 gaps inner 15
 gaps outer 15
 
+border_radius 5
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango: Source Code Pro for Powerline Black 10
@@ -244,7 +246,7 @@ bindsym $mod+p exec --no-startup-id betterlocki3lock
 exec_always --no-startup-id feh --randomize --bg-fill ~/.wallpapers/* --randomize --bg-fill ~/.wallpapers/*
 
 # screenshot
-# bindsym Print exec scrot
+bindsym Print exec scrot
 
 # lets use compotopon for nice effects
 exec --no-startup-id compton --config ~/.config/compton.conf -f -b
@@ -256,15 +258,15 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 assign [class="Google-chrome"] → $ws3
 exec google-chrome
 
-# assign [class="konsole"] → $ws1
-# exec konsole
+assign [class="konsole"] → $ws1
+exec konsole
 
 # assign [class="Google Play Music Desktop Player"] → $ws5
 # exec google-play-music-desktop-player
 # exec gpmdp
 
-assign [class="Spotify"] → $ws5
-exec spotify
+# assign [class="Spotify"] → $ws5
+# exec spotify
 
 # assign [class="Slack"] → $ws7
 # exec slack
