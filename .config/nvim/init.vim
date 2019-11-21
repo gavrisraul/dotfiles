@@ -262,6 +262,8 @@ set guioptions-=l
 set guioptions-=L
 
 set ttyfast " Speed up scrolling in vim
+set regexpenengine=1
+set foldmethod=manual
 " Display different types of white spaces
 set list listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 autocmd BufWritePre * :%s/\s\+$//e " Remove whitespaces on save
