@@ -76,6 +76,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/simeji/winresizer'
     " pip3 install pynvim --upgrade | :UpdateRemotePlugins
     Plug 'https://github.com/numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'https://github.com/echuraev/translate-shell.vim', { 'do': 'wget -O ~/.vim/trans git.io/trans && chmod +x ~/.vim/trans' }
     function! BuildYCM(info)
         " info is a dictionary with 3 fields
@@ -85,7 +86,7 @@ call plug#begin('~/.config/nvim/plugged')
         if a:info.status == 'installed' || a:info.force
             " --java-completer beware you need jdk8
             " --cs-completer --go-completer --ts-completer -rust-completer
-            !./install.py --clang-completer
+            !./install.py --clang-completer && ln -sf .config/nvim/plugged/YouCompleteMe/third_party /home/rg/third_party
         endif
     endfunction
     " https://github.com/ycm-core/YouCompleteMe
@@ -108,10 +109,10 @@ let g:gruvbox_termcolors=256
 let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:gruvbox_contrast_dark='hard'
-let g:colorminder_scheme_default_gui='gruvbox'
-let g:colorminder_scheme_default_term='gruvbox'
+" let g:colorminder_scheme_default_gui='gruvbox'
+" let g:colorminder_scheme_default_term='gruvbox'
 
-" colorscheme gruvbox
+colorscheme gruvbox
 
 " let g:molokai_original = 1 " If you prefer the scheme to match the original monokai
 " let g:rehash256 = 1 " For color terminals which attempts to bring the 256 color version
