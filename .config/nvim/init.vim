@@ -32,15 +32,12 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/dracula/vim', { 'as': 'dracula' }
     Plug 'https://github.com/chriskempson/base16-vim'
     Plug 'https://github.com/joshdick/onedark.vim'
-    " Plug 'https://github.com/rojspencer/vim-colorminder'
     Plug 'https://github.com/vim-airline/vim-airline'
     Plug 'https://github.com/vim-airline/vim-airline-themes'
     Plug 'https://github.com/ryanoasis/vim-devicons'
     Plug 'https://github.com/scrooloose/nerdtree'
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/ludovicchabant/vim-gutentags'
-    Plug 'https://github.com/mileszs/ack.vim'
-    Plug 'https://github.com/ctrlpvim/ctrlp.vim'
     Plug 'https://github.com/junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'https://github.com/junegunn/fzf.vim'
     Plug 'https://github.com/tpope/vim-surround'
@@ -78,19 +75,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'https://github.com/numirias/semshi', { 'do': ':UpdateRemotePlugins' }
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'https://github.com/echuraev/translate-shell.vim', { 'do': 'wget -O ~/.vim/trans git.io/trans && chmod +x ~/.vim/trans' }
-    function! BuildYCM(info)
-        " info is a dictionary with 3 fields
-        " - name:   name of the plugin
-        " - status: 'installed', 'updated', or 'unchanged'
-        " - force:  set on PlugInstall! or PlugUpdate!
-        if a:info.status == 'installed' || a:info.force
-            " --java-completer beware you need jdk8
-            " --cs-completer --go-completer --ts-completer -rust-completer
-            !./install.py --clang-completer && ln -sf .config/nvim/plugged/YouCompleteMe/third_party /home/rg/third_party
-        endif
-    endfunction
-    " https://github.com/ycm-core/YouCompleteMe
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 call plug#end()
 
 " Enable filetype plugins
@@ -267,7 +251,7 @@ set re=1
 set foldmethod=manual
 " Display different types of white spaces
 set list listchars=tab:›\ ,trail:•,extends:#,nbsp:.
-autocmd BufWritePre * :%s/\s\+$//e " Remove whitespaces on save
+" autocmd BufWritePre * :%s/\s\+$//e " Remove whitespaces on save
 
 
 set laststatus=2 " Status bar
@@ -420,22 +404,6 @@ map <leader>nn :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = '😎 ▸'
 let g:NERDTreeDirArrowCollapsible = '🤣 ▾'
 
-"""""""""""""""""""""
-" => Ctrlp          "
-"""""""""""""""""""""
-set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
-                          \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
 """"""""""""""""""""
 " => Multiple curs "
 """"""""""""""""""""
@@ -563,21 +531,6 @@ let g:indentLine_setColors = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 """""""""""""""""""
-" => Ack.vim      "
-"""""""""""""""""""
-let g:ackprg="ack -H --nocolor --nogroup --column"
-" Open a new tab and search for something
-nmap <leader>a :tab split<CR>:Ack ""<Left>
-" Immediately search for the work under the cursor in a new tab
-nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
-
-let g:projectA_path="/home/rg"
-
-function! SS(toSearch)
-    execute "Ack! ".a:toSearch." ".g:projectA_path
-endfunction
-
-"""""""""""""""""""
 " => Airline      "
 """""""""""""""""""
 let g:airline_powerline_fonts = 1
@@ -596,14 +549,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_list_window_size = 5
 " Don't run linters on file enter
 let g:ale_lint_on_enter = 0
-
-"""""""""""""""""
-" => YCM        "
-"""""""""""""""""
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_auto_trigger = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 """"""""""""""""
 " => transShell"
@@ -743,3 +688,5 @@ endfunction
 imap <F8>   <Esc>:call SwitchColor(1)<CR>
  map <F7>      :call SwitchColor(-1)<CR>
 imap <F7> <Esc>:call SwitchColor(-1)<CR>
+
+set modifiable
